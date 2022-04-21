@@ -39,6 +39,7 @@ export default class Todo extends Component {
         <Input
           value={this.state.isEdit ? this.state.edit : this.props.todo.content} 
           onInput={this.setEdit.bind(this)} 
+          onEnter={() => this.submitEdit()}
         /> :
         <div className="content">{ this.props.todo.content }</div>
     )

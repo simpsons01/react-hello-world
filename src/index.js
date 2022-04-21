@@ -100,9 +100,15 @@ class App extends React.Component {
         <div className="todo-input">
           <Input 
             value={this.state.inputTodo} 
-            onInput={value => this.setState({ inputTodo: value })} 
+            onInput={value => this.setState({ inputTodo: value })}
+            onEnter={() => this.onSubmit()} 
           />
-          <button onClick={this.onSubmit.bind(this)}>送出</button>
+          <button 
+            className="todo-control" 
+            onClick={this.onSubmit.bind(this)}
+          > 
+            送出
+          </button>
         </div>
         <div>篩選: {filterRadio}  </div>
         <div className="todo-container">
