@@ -1,0 +1,20 @@
+.todo-container {
+  margin-top: 10px;
+}
+
+.todo + .todo {
+  margin-top: 5px;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+}
+
+.todo .todo-control {
+  margin-left: 4px;
+}
+
+.todo .todo-checkbox {
+  margin-right: 4px;
+}
