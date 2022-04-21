@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import Todo from "../src/component/Todo"
 import Input from "./component/Input";
 import Radio from "./component/Radio";
+import { nanoid } from "nanoid"
 
 const FILTER_TODO = {
   DONE: 0,
@@ -17,8 +18,6 @@ const FILTER_RADIO_GROUP = [
   { label: 'all', value: FILTER_TODO.ALL },
 ]
 
-let uid = 0
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -26,7 +25,7 @@ class App extends React.Component {
       inputTodo: "",
       filter: FILTER_TODO.ALL,
       todos: [
-        { id: uid, content: '7:20到垃圾', done: false }
+        { id: nanoid(), content: '7:20到垃圾', done: false }
       ]
     }
   }
@@ -37,9 +36,8 @@ class App extends React.Component {
   }
 
   addTodo(todo) {
-    uid += 1
     this.setState(prevState => ({
-      todos: [...prevState.todos, { id: uid, content: todo, done: false}]
+      todos: [...prevState.todos, { id: nanoid(), content: todo, done: false}]
     })) 
   }
 
