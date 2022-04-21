@@ -18,3 +18,8 @@
 .todo .todo-checkbox {
   margin-right: 4px;
 }
+
+
+.todo.done .content {
+  text-decoration: line-through;
+}

@@ -79,6 +79,7 @@ class App extends React.Component {
         key={todo.id} 
         todo={todo} 
         updateTodo={this.updateTodo.bind(this)} 
+        deleteTodo={this.deleteTodo.bind(this)}
       />
     )
    )

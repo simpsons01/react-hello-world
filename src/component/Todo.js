@@ -34,13 +34,13 @@ export default class Todo extends Component {
   }
 
   render() {
-    const main = (
+    const content = (
       this.state.isEdit ? 
         <Input
           value={this.state.isEdit ? this.state.edit : this.props.todo.content} 
           onInput={this.setEdit.bind(this)} 
         /> :
-        <div>{ this.props.todo.content }</div>
+        <div className="content">{ this.props.todo.content }</div>
     )
     const button = (() => {
       const text = this.state.isEdit ? '送出' : '編輯'
@@ -64,15 +64,23 @@ export default class Todo extends Component {
        </button> : 
        null
     )
-    return <div className="todo">
+    return (
+      <div className={this.props.todo.done ? "todo done" : "todo" }>
         <Checkbox 
           className="todo-checkbox" 
-          checked={this.props.todo.checked} 
+          checked={this.props.todo.done} 
           onChange={this.toggleFinish.bind(this)} 
         />
-       {main}
-       {button}
-       {cancelButton}
-    </div>
+        {content}
+        {button}
+        {cancelButton}
+        <button 
+          className="todo-control" 
+          onClick={() => this.props.deleteTodo(this.props.todo.id)}
+        >
+          刪除
+        </button> 
+      </div>
+    )
   }
 }
