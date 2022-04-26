@@ -22,11 +22,14 @@ function Foo(props) {
     callback()
   })
 
-  const add = () => {
-    setCount(prevCount => prevCount + 1)
-    if(count % 2 === 0) {
+  React.useEffect(() => {
+    if(count !== 0 && count % 2 === 0) {
       setCount2(prevCount2 => prevCount2 + 1)
     }
+  }, [count])
+
+  const add = () => {
+    setCount(prevCount => prevCount + 1)
   }
 
   return (
