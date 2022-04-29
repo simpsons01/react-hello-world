@@ -4,41 +4,37 @@ import ReactDOM from 'react-dom/client';
 // eslint-disable-next-line
 const MyInput = React.forwardRef((props, ref) => {
 
-  const _ref = React.useRef(null)
-
-  const handleImperativeHandle = {
-    focus: () => {
-      _ref.current.focus()
-    },
-    compare: (parentRef) => {
-      console.log(parentRef.current === handleImperativeHandle) // true
-    }
-  }
+  const handleImperativeHandle = props.count > 5 ? 'bigger than 5' : 'smaller than 5' 
    
   React.useImperativeHandle(ref, () => handleImperativeHandle)
 
   return (
-    <input 
-      ref={inputNode => {
-        console.log("set ref!")
-        _ref.current = inputNode
-      }} 
-      type="text" 
-    />
+    <div>
+      { handleImperativeHandle }
+    </div>
   )
 })
 
 function App() {
   const ref = React.useRef(null)
+  const [ count, setCount ] = React.useState(0)
   
   React.useEffect(() => {
-    ref.current.focus()
-    ref.current.compare(ref)
+    console.log(ref.current)
   })
+   
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      setCount(count => count + 1)
+    }, 1000)
+    return () => clearInterval(id)
+  }, [])
+
   return (
     <MyInput 
+      count={count}
       ref={x => {
-        console.log(x)
+        console.log('set ref')
         ref.current = x
       }}
     />
