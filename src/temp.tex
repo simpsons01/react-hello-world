@@ -1,0 +1,53 @@
+- render(1)
+  - value
+    - myRef: 0
+    - count2Ref: 0
+    - count2: 0
+    - doubleCount2: 0
+    - doubleCount1: 0
+  - console
+    - ----------------- example rerender start! -------------
+    - console.log("double count1 useMemo called again!")
+    - console.log("double count2 useMemo called again!")
+    - ----------------- example rerender end! -------------
+    - console.log("useEffect called!")
+
+- render(2)
+  - value
+    - myRef: 0
+    - count2Ref: 0
+    - count2: 1
+    - doubleCount2: 2
+    - doubleCount1: 0
+  - console
+    - ----------------- example rerender start! -------------
+    - console.log("double count2 useMemo called again!")
+    - ----------------- example rerender end! -------------  
+    - console.log("useEffect called!")
+    
+    
+- render(3)
+  - value
+    - myRef: 1
+    - count2Ref: 0
+    - count2: 2
+    - doubleCount2: 4
+    - doubleCount1: 0
+  - console
+    - ----------------- example rerender start! -------------
+    - console.log("double count2 useMemo called again!")
+    - ----------------- example rerender end! -------------   
+    - console.log("useEffect called!")
+    
+
+- render(4)
+  - value
+    - myRef:  2
+    - count2Ref: 0
+    - count2: 2
+    - doubleCount2: 4
+    - doubleCount1: 4
+  - console
+    - ----------------- example rerender start! -------------
+    - console.log("double count1 useMemo called again!")
+    - ----------------- example rerender end! -------------   
